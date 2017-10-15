@@ -1,7 +1,7 @@
-(ns comugen.core.pages.main
+(ns mugenator.core.pages.main
     (:require [reagent.core :as reagent :refer [atom]]
-              [comugen.core.components.page :refer [page-skeleton]]))
+              [mugenator.core.components.page :refer [page-skeleton]]))
 
 (defn main-page []
-  [page-skeleton 
+  [page-skeleton
     [:div.main-content "Main page"]])
