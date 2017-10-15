@@ -1,0 +1,133 @@
+/* common */
+html,
+body {
+  height: 100%;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+pre,
+form,
+fieldset,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-weight: normal;
+  font-style: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+/* fonts */
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* app */
+.app {
+    height: 100%;
+    width: 100%;
+}
+
+/* page skeleton */
+.page {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.page-row {
+    display: table-row;
+    width: 100%;
+}
+
+.page-cell {
+    display: table-cell;
+    width: 100%;
+}
+
+.page-content {
+    background-color: red; 
+}
+
+/* header */
+.header {
+    display: flex;
+    align-items: center;
+
+    padding: 10px;
+
+    border-bottom: 1px solid black;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.navigation {
+    padding-left: 20px;
+}
+
+.navitem {
+    border: 1px dotted darkkhaki;
+    padding: 10px;
+}
