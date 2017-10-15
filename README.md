@@ -1,6 +1,6 @@
 # μG
 
-Collaborative music syntezator.
+Collaborative music synthesizer.
 
 ## Overview
 
