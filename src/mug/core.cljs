@@ -1,6 +1,6 @@
-(ns mugenator.core
+(ns mug.core
     (:require [reagent.core :as reagent :refer [atom]]
-              [mugenator.core.router :refer [app-routes current-page]]))
+              [mug.core.router :refer [app-routes current-page]]))
 
 (enable-console-print!)
 
