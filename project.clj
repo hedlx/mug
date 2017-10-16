@@ -1,6 +1,6 @@
-(defproject comugen "0.0.1"
-  :description "Collaborative music generator"
-  :url "http://github.com/hedlx/comugen"
+(defproject mug "0.0.1"
+  :description "Collaborative music syntezator"
+  :url "http://github.com/hedlx/mug"
   :license {:name "The MIT License"
             :url "http://opensource.org/licenses/MIT"}
 
@@ -24,16 +24,16 @@
                 ;; The presence of a :figwheel configuration here
                 ;; will cause figwheel to inject the figwheel client
                 ;; into your build
-                :figwheel {:on-jsload "comugen.core/on-js-reload"
+                :figwheel {:on-jsload "mug.core/on-js-reload"
                            ;; :open-urls will pop open your application
                            ;; in the default browser once Figwheel has
                            ;; started and compiled your application.
                            ;; Comment this out once it no longer serves you.
                            :open-urls ["http://localhost:3449/index.html"]}
 
-                :compiler {:main comugen.core
+                :compiler {:main mug.core
                            :asset-path "js/compiled/out"
-                           :output-to "resources/public/js/compiled/comugen.js"
+                           :output-to "resources/public/js/compiled/mug.js"
                            :output-dir "resources/public/js/compiled/out"
                            :source-map-timestamp true
                            ;; To console.log CLJS data-structures make sure you enable devtools in Chrome
@@ -44,8 +44,8 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src"]
-                :compiler {:output-to "resources/public/js/compiled/comugen.js"
-                           :main comugen.core
+                :compiler {:output-to "resources/public/js/compiled/mug.js"
+                           :main mug.core
                            :optimizations :advanced
                            :pretty-print false}}]}
 
