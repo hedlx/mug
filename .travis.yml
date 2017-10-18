@@ -7,7 +7,9 @@ language: clojure
 jdk:
 - oraclejdk8
 
-script: lein cljsbuild once min
+script:
+  - lein kibit src test
+  - lein cljsbuild once min
 
 deploy:
   provider: pages
