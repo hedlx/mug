@@ -1,4 +1,4 @@
-# μG
+# μG [![Build Status](https://travis-ci.org/hedlx/mug.svg?branch=master)](https://travis-ci.org/hedlx/mug)
 
 Collaborative music synthesizer.
 
