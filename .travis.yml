@@ -1,0 +1,18 @@
+env:
+  global:
+    secure: IasK3WzbNbZVHLPomglU6PL9Q+lxCej1Z0kYbwu+BTk8y8sJr8tJMysMSHi9A5woZ3Vw2nnQLS1QeiaZS2jEwfxUfJfF5GOxG9ZRwDJiuGAu1Uj6ZTIvcaSoi+ADeJ66GZn3MajRODgkPvq/G+NbYiKa1eYC4YmJMR0j7Av3RZpGvQJXFkOJtaK5L4yg5uRNhaSnpVyiNQkellXCWKAxY0m53oJEBAQVp5ytgDpnls6lUnZN6gbzwq7bWGjzoYGt5pmBUwQrd4uE7hVPZ2TEodcgK+vaiZhWv1AuawJtEXnL/vs78buNOCr5q9V5DMHSNYH30u3ICm3NDVw0BiGs8LiGBkqjzhzvH3e/E8RWLn2EIJWvQSjpbeqJqoz/tnEq2+ZilUOVgtm4twiTQXCiFnY6PJSMAd454r1ZJc4dLtf4uk8ZE7BuEcGs4pB2sKOOWhnP2k3Q9maGwWKnUfPx4mdB20v0V+rWQF1zo+UlehXfYi9xWYS5DmxX76KoOinqL6aTVYG9dQZrmgG5XhsB4pXwHbhWHdBY0OhJaRxYzHnmoAu1ugk5Y9GMBK7Qb2160FDvTCtT0omXuFk6dNbHcPYqZEcOFdr7B4JDPxW1dI0MrVts7PE6d6XH8kKPzdKy/gVLv8X5TI7nc7+OkWZUb7PnQXsFDug3x+1lMwmc0fc=
+
+
+language: clojure
+jdk:
+- oraclejdk8
+
+script: lein cljsbuild once min
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: resources/public
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master

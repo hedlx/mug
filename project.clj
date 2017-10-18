@@ -44,10 +44,14 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src"]
-                :compiler {:output-to "resources/public/js/compiled/mug.js"
-                           :main mug.core
-                           :optimizations :advanced
-                           :pretty-print false}}]}
+                :incremental true
+                :compiler {:main mug.core
+                           :asset-path "js/compiled/deps"
+                           :output-to "resources/public/js/compiled/mug.js"
+                           :output-dir "resources/public/js/compiled/deps"
+                           :optimizations :none
+                           :pseudo-names true
+                           :pretty-print true}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
              ;; :server-port 3449 ;; default
