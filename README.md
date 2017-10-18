@@ -1,6 +1,7 @@
+# μG
+
 [![Build Status](https://travis-ci.org/hedlx/mug.svg?branch=master)](https://travis-ci.org/hedlx/mug)
 
-# μG 
 Wannabe music synthesizer.
 
 ## Setup
