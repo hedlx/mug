@@ -12,7 +12,8 @@
                  [secretary "1.2.3"]
                  [reagent "0.7.0"]]
 
-  :plugins [[lein-figwheel "0.5.13"]
+  :plugins [[lein-kibit "0.1.5"]
+            [lein-figwheel "0.5.13"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
 
   :source-paths ["src"]
