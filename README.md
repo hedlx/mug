@@ -1,10 +1,7 @@
-# μG [![Build Status](https://travis-ci.org/hedlx/mug.svg?branch=master)](https://travis-ci.org/hedlx/mug)
+[![Build Status](https://travis-ci.org/hedlx/mug.svg?branch=master)](https://travis-ci.org/hedlx/mug)
 
-Collaborative music synthesizer.
-
-## Overview
-
-FIXME: Write a paragraph about the library/project and highlight its goals.
+# μG 
+Wannabe music synthesizer.
 
 ## Setup
 
@@ -32,6 +29,8 @@ To create a production build run:
 And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL.
 
-## Copyright
+## License
 
-Copyright © 2017 Hedlx Team
+Copyright 2017 [contributors](https://github.com/hedlx/mug/contributors).
+
+Distributed under the [MIT](https://opensource.org/licenses/MIT) license.
