@@ -10,7 +10,8 @@
                  [org.clojure/clojurescript "1.9.908"]
                  [org.clojure/core.async  "0.3.443"]
                  [secretary "1.2.3"]
-                 [reagent "0.7.0"]]
+                 [reagent "0.7.0"]
+                 [venantius/accountant "0.2.0"]]
 
   :plugins [[lein-figwheel "0.5.13"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
