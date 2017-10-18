@@ -1,7 +1,7 @@
-(ns mug.core.pages.main
+(ns mug.pages.main
     (:require [reagent.core :as reagent :refer [atom]]
-              [mug.core.components.page :refer [page-skeleton]]))
+              [mug.components.page :refer [page-skeleton]]))
 
 (defn main-page []
   [page-skeleton
-    [:div.main-content "Main page"]])
+    [:div "Main page"]])

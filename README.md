@@ -8,6 +8,7 @@ Wannabe music synthesizer.
 To get an interactive development environment run:
 
     lein figwheel
+    lein garden auto
 
 and open your browser at [localhost:3449](http://localhost:3449/).
 This will auto compile and send all changes to the browser without the

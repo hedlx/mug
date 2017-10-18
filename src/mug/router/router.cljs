@@ -6,8 +6,8 @@
     [goog.events :as events]
     [goog.history.EventType :as EventType]
     [reagent.core :as reagent]
-    [mug.core.pages.main :refer [main-page]]
-    [mug.core.pages.manual :refer [manual-page]]
+    [mug.pages.main :refer [main-page]]
+    [mug.pages.manual :refer [manual-page]]
     [mug.core.state :refer [app-state]]
     [accountant.core :as accountant]))
 
