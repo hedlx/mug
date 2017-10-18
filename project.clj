@@ -1,5 +1,5 @@
 (defproject mug "0.0.1"
-  :description "Collaborative music syntezator"
+  :description "Collaborative music synthesizer"
   :url "http://github.com/hedlx/mug"
   :license {:name "The MIT License"
             :url "http://opensource.org/licenses/MIT"}
@@ -10,10 +10,12 @@
                  [org.clojure/clojurescript "1.9.908"]
                  [org.clojure/core.async  "0.3.443"]
                  [secretary "1.2.3"]
+                 [venantius/accountant "0.2.0"]
                  [reagent "0.7.0"]
-                 [venantius/accountant "0.2.0"]]
+                 [garden "1.3.2"]]
 
   :plugins [[lein-kibit "0.1.5"]
+            [lein-garden "0.3.0"]
             [lein-figwheel "0.5.13"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
 
@@ -94,7 +96,6 @@
              ;; :server-logfile false
              }
 
-
   ;; Setting up nREPL for Figwheel and ClojureScript dev
   ;; Please see:
   ;; https://github.com/bhauman/lein-figwheel/wiki/Using-the-Figwheel-REPL-within-NRepl
@@ -108,4 +109,9 @@
                    :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
                    ;; need to add the compliled assets to the :clean-targets
                    :clean-targets ^{:protect false} ["resources/public/js/compiled"
-                                                     :target-path]}})
+                                                     :target-path]}}
+
+  :garden {:builds [{:source-paths ["src"]
+                     :stylesheet mug.styles.core/styles
+                     :compiler {:output-to "resources/public/css/core.css"
+                                :pretty-print? false}}]})

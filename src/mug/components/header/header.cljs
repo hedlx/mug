@@ -3,6 +3,6 @@
 
 (defn header []
   [:div.header
-    [:a.title {:href "/"} "μG"]
-    [:div.navigation
-      [:a.navitem {:href "/manual"} "Manual"]]])
+    [:a.header-title {:href "/"} "μG"]
+    [:div.header-navigation
+      [:a.header-navigation-item {:href "/manual"} "Manual"]]])
