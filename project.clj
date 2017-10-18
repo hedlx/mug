@@ -1,5 +1,5 @@
 (defproject mug "0.0.1"
-  :description "Collaborative music syntezator"
+  :description "Collaborative music synthesizer"
   :url "http://github.com/hedlx/mug"
   :license {:name "The MIT License"
             :url "http://opensource.org/licenses/MIT"}
