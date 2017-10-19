@@ -39,8 +39,9 @@
    [:h1 :h1 :h3 :h4 :h5 :h6 {:font-size   "100%"
                              :font-weigth "normal"}]
    [:* {:font-family "'Open Sans', sans-serif"}]
-
-   [:.app {:height "100%"
+   [:.height-zero {:height "0"}]
+   [:.width-zero  {:width "0"}]
+   [:#app {:height "100%"
            :width  "100%"}]])
 
 (defstyles styles
