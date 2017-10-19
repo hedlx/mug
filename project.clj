@@ -113,4 +113,5 @@
   :garden {:builds [{:source-paths ["src"]
                      :stylesheet mug.styles.core/styles
                      :compiler {:output-to "resources/public/css/core.css"
+                                :vendors [:moz :webkit]
                                 :pretty-print? false}}]})

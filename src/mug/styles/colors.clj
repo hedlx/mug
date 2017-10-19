@@ -1,0 +1,26 @@
+(ns mug.styles.colors)
+
+(def default-bg "#f9f5d7")
+(def default-fg "#282828")
+(def light-fg "#fbf1c7")
+
+(def header-bg "#b16286")
+(def header-bg-hover "#8f3f71")
+
+(def dark-bg "#282828")
+(def dark-fg "#ebdbb2")
+
+(def red "#cc241d")
+(def red-br "#fb4934")
+(def green "#98971a")
+(def green-br "#b8bb26")
+(def yellow "#d79921")
+(def yellow-br "#fabd2f")
+(def blue "#458588")
+(def blue-br "#83a598")
+(def purple "#b16286")
+(def purple-br "#d3869b")
+(def aqua "#689d6a")
+(def aqua-br "#8ec07c")
+(def orange "#d65d0e")
+(def orange-br "#fe8019")
