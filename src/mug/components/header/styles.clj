@@ -2,6 +2,7 @@
 
 (def defaults
   [[:.header {:display       "flex"
+              :position      "static"
               :align-items   "center"
               :padding       "10px"
               :border-bottom "1px solid black"}]
