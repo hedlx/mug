@@ -10,7 +10,6 @@
                  [org.clojure/clojurescript "1.9.908"]
                  [org.clojure/core.async  "0.3.443"]
                  [secretary "1.2.3"]
-                 [venantius/accountant "0.2.0"]
                  [reagent "0.7.0"]
                  [garden "1.3.2"]]
 
