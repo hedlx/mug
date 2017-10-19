@@ -8,16 +8,18 @@
     [reagent.core :as reagent]
     [mug.pages.main :refer [main-page]]
     [mug.pages.manual :refer [manual-page]]
-    [mug.core.state :refer [app-state]]
-    [accountant.core :as accountant]))
+    [mug.core.state :refer [app-state]]))
+
+(defn hook-browser-navigation! []
+  (doto (History.)
+    (events/listen EventType/NAVIGATE #(secretary/dispatch! (.-token %)))
+    (.setEnabled true)))
 
 (defn app-routes []
+  (secretary/set-config! :prefix "#")
   (defroute "/" [] (swap! app-state assoc :page :main))
   (defroute "/manual" [] (swap! app-state assoc :page :manual))
-  (accountant/configure-navigation!
-    {:nav-handler #(secretary/dispatch! %)
-     :path-exists? #(secretary/locate-route %)})
-  (accountant/dispatch-current!))
+  (hook-browser-navigation!))
 
 (defmulti current-page #(@app-state :page))
 (defmethod current-page :main [] [main-page])
