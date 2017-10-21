@@ -9,6 +9,7 @@ jdk:
 
 script:
   - lein kibit src test
+  - lein garden once
   - lein cljsbuild once min
 
 deploy:

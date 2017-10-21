@@ -1,10 +1,10 @@
 (ns mug.core
-    (:require [reagent.core :as reagent :refer [atom]]
-              [mug.core.router :refer [app-routes current-page]]))
+  (:require [reagent.core :as r]
+            [mug.core.router :refer [app-routes current-page]]))
 
 (enable-console-print!)
 
 ((defn main []
-  (app-routes)
-  (reagent/render [current-page]
-                  (.getElementById js/document "app"))))
+   (app-routes)
+   (r/render [current-page]
+             (.getElementById js/document "app"))))
