@@ -5,10 +5,11 @@ env:
 
 language: clojure
 jdk:
-- oraclejdk8
+  - oraclejdk8
 
 script:
   - lein kibit src test
+  - lein cljfmt check
   - lein garden once
   - lein cljsbuild once min
 

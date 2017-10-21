@@ -25,6 +25,6 @@
 
 (defn editor [program]
   (r/create-class
-    {:component-did-mount update-editable
-     :component-will-unmount reset-editable
-     :reagent-render render}))
+   {:component-did-mount update-editable
+    :component-will-unmount reset-editable
+    :reagent-render render}))

@@ -16,6 +16,7 @@
   :plugins [[lein-kibit "0.1.5"]
             [lein-garden "0.3.0"]
             [lein-figwheel "0.5.13"]
+            [lein-cljfmt "0.5.7"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
 
   :source-paths ["src"]

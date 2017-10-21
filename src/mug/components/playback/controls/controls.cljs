@@ -10,8 +10,8 @@
     (fn []
       [:div.playback-controls
        [:div.playback-button
-         (get-button
-           #(do (handle-start) (reset! state :started))
-           #(do (handle-stop) (reset! state :stopped))
-           @state)]
+        (get-button
+         #(do (handle-start) (reset! state :started))
+         #(do (handle-stop) (reset! state :stopped))
+         @state)]
        [:div.playback-placeholder]])))
