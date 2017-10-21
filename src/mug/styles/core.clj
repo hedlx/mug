@@ -53,10 +53,10 @@
            :width "100%"}]])
 
 (defstyles styles
-           (concat defaults
-                   mug.components.header.styles/defaults
-                   mug.components.page.styles/defaults
-                   mug.components.editor.styles/defaults
-                   mug.components.buttons.icon.styles/defaults
-                   mug.components.playback.controls.styles/defaults
-                   mug.pages.styles/defaults))
+  (concat defaults
+          mug.components.header.styles/defaults
+          mug.components.page.styles/defaults
+          mug.components.editor.styles/defaults
+          mug.components.buttons.icon.styles/defaults
+          mug.components.playback.controls.styles/defaults
+          mug.pages.styles/defaults))

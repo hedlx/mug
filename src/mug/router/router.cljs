@@ -1,14 +1,13 @@
 (ns mug.core.router
   (:require-macros [secretary.core :refer [defroute]])
   (:import goog.History)
-  (:require
-    [secretary.core :as secretary]
-    [goog.events :as events]
-    [goog.history.EventType :as EventType]
-    [reagent.core :as reagent]
-    [mug.pages.main :refer [main-page]]
-    [mug.pages.manual :refer [manual-page]]
-    [mug.core.state :refer [app-state]]))
+  (:require [secretary.core :as secretary]
+            [goog.events :as events]
+            [goog.history.EventType :as EventType]
+            [reagent.core :as reagent]
+            [mug.pages.main :refer [main-page]]
+            [mug.pages.manual :refer [manual-page]]
+            [mug.core.state :refer [app-state]]))
 
 (defn hook-browser-navigation! []
   (doto (History.)
