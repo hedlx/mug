@@ -8,6 +8,8 @@ jdk:
   - oraclejdk8
 
 script:
+  - npm install
+  - npm run build
   - lein cljfmt check
   - lein garden once
   - lein cljsbuild once min

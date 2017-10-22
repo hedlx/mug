@@ -10,7 +10,7 @@
    [:.manual-page-controls {:flex-grow "0"
                             :height "40px"
                             :width "100%"
-                            :padding-bottom "10px"}]
+                            :padding-bottom "15px"}]
    [:.manual-page-content-editor-container {:position "relative"
                                             :flex-grow "1"
                                             :height "100%"

@@ -10,6 +10,6 @@
    [:.playback-placeholder {:flex-grow "1"
                             :width "100%"
                             :height "100%"
-                            :margin-left "20px"
+                            :margin-left "15px"
                             :border-radius "10px"
                             :background-color c/orange}]])

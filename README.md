@@ -5,6 +5,10 @@
 Wannabe music synthesizer.
 
 ## Setup
+To build npm dependencies run:
+
+    npm install
+    npm run build
 
 To get an interactive development environment run:
 
