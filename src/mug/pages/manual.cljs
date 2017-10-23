@@ -10,7 +10,7 @@
       [page-skeleton
        [:div.manual-page-content
         [:div.manual-page-controls
-         [playback-controls #(println "play") #(println "stop")]]
+         [playback-controls #(println "play" @program) #(println "stop")]]
         [:div.manual-page-content-editor-container
          [:div.manual-page-content-editor
           [editor program]]]]])))

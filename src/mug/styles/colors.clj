@@ -8,8 +8,15 @@
 (def header-bg-hover "#8f3f71")
 
 (def dark-bg "#282828")
+(def dark-bg2 "#504945")
 (def dark-fg "#ebdbb2")
+(def dark-fg0 "#fbf1c7")
+(def dark-fg2 "#d5c4a1")
+(def dark-fg3 "#dbae93")
+(def dark-fg4 "#a89984")
 
+(def gray "#928374")
+(def dark-gray "#665c54")
 (def red "#cc241d")
 (def red-br "#fb4934")
 (def green "#98971a")

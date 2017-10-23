@@ -8,7 +8,7 @@
 
   :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
                  [org.clojure/clojurescript "1.9.908"]
-                 [org.clojure/core.async  "0.3.443"]
+                 [org.clojure/core.async "0.3.443"]
                  [secretary "1.2.3"]
                  [reagent "0.7.0"]
                  [cljs-bach "0.2.0"]
@@ -29,6 +29,7 @@
                 ;; The presence of a :figwheel configuration here
                 ;; will cause figwheel to inject the figwheel client
                 ;; into your build
+
                 :figwheel {:on-jsload "mug.core/on-js-reload"
                            ;; :open-urls will pop open your application
                            ;; in the default browser once Figwheel has
@@ -41,6 +42,9 @@
                            :output-to "resources/public/js/compiled/mug.js"
                            :output-dir "resources/public/js/compiled/out"
                            :source-map-timestamp true
+
+                           :foreign-libs [{:file "resources/public/js/npm-deps-bundle.js"
+                                           :provides ["webpack.bundle"]}]
                            ;; To console.log CLJS data-structures make sure you enable devtools in Chrome
                            ;; https://github.com/binaryage/cljs-devtools
                            :preloads [devtools.preload]}}
@@ -54,8 +58,11 @@
                            :asset-path "js/compiled/deps"
                            :output-to "resources/public/js/compiled/mug.js"
                            :output-dir "resources/public/js/compiled/deps"
+
+                           :foreign-libs [{:file "resources/public/js/npm-deps-bundle.js"
+                                           :provides ["webpack.bundle"]}]
+
                            :optimizations :none
-                           :pseudo-names true
                            :pretty-print true}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
