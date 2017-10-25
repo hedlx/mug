@@ -1,4 +1,4 @@
-(ns mug.core.synth
+(ns mug.core.synth.synth
   (:require [cljs-bach.synthesis :as b]))
 
 (defonce context (b/audio-context))
