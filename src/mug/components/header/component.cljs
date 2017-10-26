@@ -1,4 +1,4 @@
-(ns mug.core.components.header
+(ns mug.components.header.component
   (:require [reagent.core :as reagent :refer [atom]]))
 
 (defn header []

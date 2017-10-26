@@ -2,9 +2,9 @@
   (:require [garden.def :refer [defstyles]]
             [mug.styles.colors :as c]
             [mug.components.header.styles]
-            [mug.components.page.styles]
+            [mug.components.page_skeleton.styles]
             [mug.components.editor.styles]
-            [mug.components.buttons.icon.styles]
+            [mug.components.buttons.icon_button.styles]
             [mug.components.playback.controls.styles]
             [mug.pages.styles]))
 
@@ -55,8 +55,8 @@
 (defstyles styles
   (concat defaults
           mug.components.header.styles/defaults
-          mug.components.page.styles/defaults
+          mug.components.page_skeleton.styles/defaults
           mug.components.editor.styles/defaults
-          mug.components.buttons.icon.styles/defaults
+          mug.components.buttons.icon_button.styles/defaults
           mug.components.playback.controls.styles/defaults
           mug.pages.styles/defaults))

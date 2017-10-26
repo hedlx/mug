@@ -1,4 +1,4 @@
-(ns mug.components.editor.editor
+(ns mug.components.editor.component
   (:require [reagent.core :as r]
             [webpack.bundle]))
 
