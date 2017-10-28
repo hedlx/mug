@@ -1,4 +1,4 @@
-(ns mug.components.buttons.icon.button)
+(ns mug.components.buttons.icon_button.component)
 
 (defn- button [icon style handle-click]
   [:div {:class (str "icon-button " style)

@@ -1,5 +1,5 @@
-(ns mug.components.playback.controls.controls
-  (:require [mug.components.buttons.icon.button :refer [play-button stop-button]]
+(ns mug.components.playback.controls.component
+  (:require [mug.components.buttons.icon_button.component :refer [play-button stop-button]]
             [reagent.core :as r]))
 
 (defn- get-button [handle-start handle-stop state]

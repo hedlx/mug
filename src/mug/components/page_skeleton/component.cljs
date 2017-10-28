@@ -1,6 +1,6 @@
-(ns mug.components.page
+(ns mug.components.page_skeleton.component
   (:require [reagent.core :as reagent :refer [atom]]
-            [mug.core.components.header :refer [header]]))
+            [mug.components.header.component :refer [header]]))
 
 (defn page-skeleton [content]
   [:div.page

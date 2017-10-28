@@ -1,4 +1,4 @@
-(ns mug.components.buttons.icon.styles
+(ns mug.components.buttons.icon_button.styles
   (:require [mug.styles.colors :as c]))
 
 (def defaults

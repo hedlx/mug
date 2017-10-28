@@ -1,9 +1,9 @@
 (ns mug.pages.manual
   (:require [reagent.core :as r]
-            [mug.components.page :refer [page-skeleton]]
-            [mug.components.editor.editor :refer [editor]]
-            [mug.components.playback.controls.controls :refer [playback-controls]]
-            [mug.core.synth.eval :as se]))
+            [mug.components.page_skeleton.component :refer [page-skeleton]]
+            [mug.components.editor.component :refer [editor]]
+            [mug.components.playback.controls.component :refer [playback-controls]]
+            [mug.domain.synth.compile :refer [eval]]))
 
 (defn manual-page []
   (let [program (r/atom "")]
@@ -11,7 +11,7 @@
       [page-skeleton
        [:div.manual-page-content
         [:div.manual-page-controls
-         [playback-controls #(se/eval-user-synth @program) #(println "stop")]]
+         [playback-controls #(eval @program) #(println "stop")]]
         [:div.manual-page-content-editor-container
          [:div.manual-page-content-editor
           [editor program]]]]])))

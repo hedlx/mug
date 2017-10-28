@@ -1,4 +1,4 @@
-(ns mug.core.synth.macro
+(ns mug.domain.eval.helper
   (:require [clojure.tools.namespace.find :as find]
             [clojure.tools.namespace.file :as file]
             [clojure.java.io :as io]
@@ -28,6 +28,5 @@
          (filter relevant?)
          collate)))
 
-(defmacro sources
-  [& names]
+(defmacro sources [& names]
   (sources* names))

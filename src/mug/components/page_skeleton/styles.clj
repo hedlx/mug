@@ -1,4 +1,4 @@
-(ns mug.components.page.styles)
+(ns mug.components.page_skeleton.styles)
 
 (def defaults
   [[:.page {:display "table"
