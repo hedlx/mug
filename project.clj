@@ -46,10 +46,11 @@
                            :output-to "resources/public/js/compiled/mug.js"
                            :foreign-libs [{:file "resources/public/js/npm-deps-bundle.js"
                                            :provides ["webpack.bundle"]}]
-                           ; we cannot use :advanced optimization due to codemirror .on issues
-                           ; and we can experience issues with eval
-                           :optimizations :whitespace
-                           :pretty-print true}}]}
+
+                           :optimizations :simple
+                           :pretty-print false
+                           :optimize-constants true
+                           :static-fns true}}]}
 
   :figwheel {:css-dirs ["resources/public/css"]}
 
