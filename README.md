@@ -35,7 +35,7 @@ To create a production build run:
 And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL.
 
-##Examples
+## Examples
 You can try examples below to generate some... hm you know, music:
 ```clojure
 (defn gen [x]
