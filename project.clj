@@ -13,7 +13,6 @@
                  [org.clojure/java.classpath "0.2.3"]
                  [secretary "1.2.3"]
                  [reagent "0.7.0"]
-                 [cljs-bach "0.2.0"]
                  [garden "1.3.2"]]
 
   :plugins [[lein-kibit "0.1.5"]

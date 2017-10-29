@@ -5,8 +5,8 @@
             [secretary.core :as secretary]
             [goog.events :as events]
             [goog.history.EventType :as EventType]
-            [mug.pages.main :refer [main-page]]
-            [mug.pages.manual :refer [manual-page]]))
+            [mug.pages.main.page :refer [main-page]]
+            [mug.pages.manual.page :refer [manual-page]]))
 
 (enable-console-print!)
 

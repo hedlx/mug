@@ -9,8 +9,9 @@
   [(-> rdr file/read-file-ns-decl second str) (slurp rdr)])
 
 (defn- files []
-  (->> (classpath/classpath-directories)
-       (mapcat #(find/find-sources-in-dir % find/cljs))))
+  (mapcat
+   #(find/find-sources-in-dir % find/cljs)
+   (classpath/classpath-directories)))
 
 (defn- jars []
   (->> (classpath/classpath-jarfiles)

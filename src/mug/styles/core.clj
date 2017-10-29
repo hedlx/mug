@@ -6,7 +6,7 @@
             [mug.components.editor.styles]
             [mug.components.buttons.icon_button.styles]
             [mug.components.playback.controls.styles]
-            [mug.pages.styles]))
+            [mug.pages.manual.styles]))
 
 (def defaults
   [[:html :body {:height "100%"
@@ -59,4 +59,4 @@
           mug.components.editor.styles/defaults
           mug.components.buttons.icon_button.styles/defaults
           mug.components.playback.controls.styles/defaults
-          mug.pages.styles/defaults))
+          mug.pages.manual.styles/defaults))
