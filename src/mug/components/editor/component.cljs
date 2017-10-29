@@ -2,7 +2,7 @@
   (:require [reagent.core :as r]
             [webpack.bundle]))
 
-(defn editor [program]
+(defn editor [source on-change]
   (let [cm (aget js/window "deps" "cm")]
     (r/create-class
      {:component-did-mount
@@ -15,8 +15,9 @@
          (.on codemirror "change"
               (fn []
                 (let [updated-program (.getValue codemirror)]
-                  (when-not (= updated-program @program)
-                    (reset! program updated-program))))))
+                  (when-not (= updated-program @source)
+                    (reset! source updated-program)
+                    (on-change @source))))))
 
       :reagent-render
       (fn [program]

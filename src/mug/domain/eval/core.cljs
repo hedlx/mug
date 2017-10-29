@@ -12,12 +12,14 @@
         (js/console.log (str "Unable to load " str-name ".")))
       (callback {:lang :clj :source (str source)}))))
 
-(defn build-eval [header sources]
+(defn build-eval [header sources footer]
   (let [current-state (empty-state)]
     (fn [source]
       (eval-str current-state
-                (str header source)
+                (str header source footer)
                 nil
                 {:eval js-eval
                  :load (build-loader sources)}
-                identity))))
+                (fn [r]
+                  (let [err (:error r)]
+                    (when-not (nil? err) (js/console.log "eval error:" (:error r)))))))))

@@ -1,4 +1,4 @@
-(ns mug.pages.styles)
+(ns mug.pages.manual.styles)
 
 (def defaults
   [[:.manual-page-content {:display "flex"

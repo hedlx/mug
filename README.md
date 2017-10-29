@@ -35,6 +35,31 @@ To create a production build run:
 And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL.
 
+##Examples
+You can try examples below to generate some... hm you know, music:
+```clojure
+(defn gen [x]
+  (bit-and (* x x)
+           (bit-shift-right x 6)
+           (bit-shift-right x 12)))
+```
+
+```clojure
+(defn gen [x]
+  (+
+    (*
+      10
+      (bit-or
+        (bit-shift-right x 6)
+        x
+        (bit-shift-right
+          x
+          (bit-shift-right x 16))))
+    (bit-and
+      (bit-shift-right x 11)
+      7)))
+```
+
 ## License
 
 Copyright 2017 [contributors](https://github.com/hedlx/mug/contributors).
