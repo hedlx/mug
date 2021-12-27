@@ -1,4 +1,4 @@
-(ns mug.domain.eval.helper
+(ns mug.domain.source
   (:require [clojure.tools.namespace.find :as find]
             [clojure.tools.namespace.file :as file]
             [clojure.java.io :as io]

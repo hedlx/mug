@@ -1,4 +1,4 @@
-(ns mug.domain.synth.core)
+(ns mug.domain.synth)
 
 (defn audio-context []
   (if js/window.AudioContext. ; Some browsers e.g. Safari don't use the unprefixed version yet.
@@ -32,11 +32,11 @@
            :buffer-offset 0
            :gain 1})))
 
-(defn- create-source [buffer onfinish]
+(defn- create-source [buffer on-finish]
   (doto
    (.createBufferSource audio-ctx)
     (-> .-buffer (set! buffer))
-    (-> .-onended (set! onfinish))))
+    (-> .-onended (set! on-finish))))
 
 (defn play [ctx offset]
   (let [buffer (fill-buffer (:buffer @ctx) (:gen-fn @ctx) offset)
