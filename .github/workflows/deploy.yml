@@ -1,0 +1,39 @@
+name: Mug CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Prepare java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'zulu'
+        java-version: '11'
+
+    - name: Install clojure tools
+      uses: DeLaGuardo/setup-clojure@3.7
+      with:
+        cli: 1.10.1.693
+        lein: 'latest'
+        boot: 'latest'
+    - name: Install dependencies
+      run: lein deps && npm i -g yarn && yarn install
+
+    - name: Build
+      run: yarn build && lein do clean, cljsbuild once prod
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.7
+      with:
+        branch: gh-pages
+        folder: resources/public

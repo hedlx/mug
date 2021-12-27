@@ -1,16 +1,9 @@
-/resources/public/js/**
+/resources/public/js/
 /resources/public/css/core.css
 figwheel_server.log
-pom.xml
-*jar
-/lib/
-/classes/
-/out/
-/target/
-.lein-deps-sum
-.lein-repl-history
-.lein-plugins/
-.repl
-.nrepl-port
 
 node_modules
+target
+.lsp
+.clj-kondo
+.calva
