@@ -26,6 +26,7 @@ cat <<EOF > prod/index.html
         <meta http-equiv="Expires" content="0" />
         <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
         <link rel="icon" href="https://clojurescript.org/images/cljs-logo-icon-32.png">
+        <title>μG</title>
     </head>
     <body>
         <div id="app"/>
