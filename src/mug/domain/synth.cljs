@@ -1,63 +1,63 @@
 (ns mug.domain.synth)
 
-(defn audio-context []
-  (if js/window.AudioContext. ; Some browsers e.g. Safari don't use the unprefixed version yet.
-    (js/window.AudioContext.)
-    (js/window.webkitAudioContext.)))
+(defn make-audio-ctx [rate on-ready]
+  (let [ctx (if js/window.AudioContext. ; Some browsers e.g. Safari don't use the unprefixed version yet.
+              (js/window.AudioContext. (clj->js {:sampleRate rate}))
+              (js/window.webkitAudioContext. (clj->js {:sampleRate rate})))]
+    (.then (-> ctx (.-audioWorklet) (.addModule "worklet/buffered.js")) #(do (on-ready ctx)))))
 
-(defonce audio-ctx (audio-context))
+(defn- make-buffer-proc [ctx on-req]
+  (let [node (js/AudioWorkletNode. ctx "buffer-processor")]
+    (.connect node (.-destination ctx))
+    (-> node
+        (.-port)
+        (-> .-onmessage (set! (fn [e] (on-req e node)))))
+    node))
 
-(defn- fill-buffer [buffer gen-fn offset]
-  (let [data (.getChannelData buffer 0)
-        length (.-length data)]
-    (doseq [i (range length)] (aset data i (-> (gen-fn (int (+ i offset)))
-                                               (mod 256)
-                                               (- 128)
-                                               (/ 128))))
-    buffer))
+(defn- make-buffer-js [size gen-fn offset]
+  (clj->js
+   (->> (range offset (+ offset size))
+        (map #(-> (gen-fn (int %))
+                  (mod 256)
+                  (- 128)
+                  (/ 128))))))
+
+(defn- send-proc [proc data]
+  (-> proc (.-port) (.postMessage data)))
 
 (defn empty-audio-context []
-  ;; Creates external audio context that will be used for controlling playback
   (let [rate 8000
-        buffer-size (* rate 10)
-        buffer (.createBuffer audio-ctx 1 buffer-size rate)
-        next-buffer (.createBuffer audio-ctx 1 buffer-size rate)]
-    (atom {:gen-fn (fn [x] 0)
+        buffer-size (/ rate 4)]
+    (atom {:gen-fn (fn [x] 128)
+           :ctx nil
            :rate rate
-           :buffer buffer
            :buffer-size buffer-size
            :offset 0
-           :source nil
+           :node nil
            :started-at 0
            :buffer-offset 0
            :gain 1})))
 
-(defn- create-source [buffer on-finish]
-  (doto
-   (.createBufferSource audio-ctx)
-    (-> .-buffer (set! buffer))
-    (-> .-onended (set! on-finish))))
+(defn- actual-play [ctx offset]
+    (let [audio-ctx (:ctx @ctx)
+          buffer (make-buffer-js (:buffer-size @ctx) (:gen-fn @ctx) offset)
+          node (make-buffer-proc audio-ctx (fn [e node]
+                                             (swap! ctx assoc :offset (+ (:buffer-size @ctx) (:offset @ctx)))
+                                             (send-proc node (make-buffer-js (:buffer-size @ctx) (:gen-fn @ctx) (:offset @ctx)))))]
+      (send-proc node buffer)
+      (swap! ctx assoc :started-at (.-currentTime audio-ctx))
+      (swap! ctx assoc :offset offset)
+      (swap! ctx assoc :node node)))
 
 (defn play [ctx offset]
-  (let [buffer (fill-buffer (:buffer @ctx) (:gen-fn @ctx) offset)
-        source (create-source
-                buffer
-                (fn []
-                  (swap! ctx assoc :buffer-offset 0)
-                  (play ctx (+ offset (:buffer-size @ctx)))))]
-    (.connect source (.-destination audio-ctx))
-    (.start source 0  (:buffer-offset @ctx))
-    (swap! ctx assoc :started-at (.-currentTime audio-ctx))
-    (swap! ctx assoc :offset offset)
-    (swap! ctx assoc :source source)))
+  (if-let [audio-ctx (:ctx @ctx)]
+    (-> (:node @ctx) (.-parameters) (.get "stopped") (.setValueAtTime false (.-currentTime audio-ctx)))
+    (make-audio-ctx (:rate @ctx) #(do (swap! ctx assoc :ctx %) (actual-play ctx offset)))))
 
 (defn stop [ctx]
-  (when-let [source (:source @ctx)]
-    (swap! ctx assoc :buffer-offset (+ (- (.-currentTime audio-ctx) (:started-at @ctx)) (:buffer-offset @ctx)))
-    (set! (.-onended source) nil)
-    (.stop source)
-    (swap! ctx assoc :source nil)))
+  (when-let [audio-ctx (:ctx @ctx)]
+    (when-let [node (:node @ctx)]
+      (-> node (.-parameters) (.get "stopped") (.setValueAtTime true (.-currentTime audio-ctx))))))
 
 (defn set-gen-fn [ctx gen-fn]
-  (swap! ctx assoc :gen-fn gen-fn)
-  (fill-buffer (:buffer @ctx) (:gen-fn @ctx) (:offset @ctx)))
+  (swap! ctx assoc :gen-fn gen-fn))
