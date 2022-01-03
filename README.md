@@ -6,10 +6,12 @@ Wannabe music synthesizer.
 
 ## Develop
 ```
-yarn build && lein figwheel
+yarn dev && lein figwheel
 ```
 
 ## Build
 ```
-yarn build && lein do clean, cljsbuild once prod
+./make-prod.sh
 ```
+
+After that you can find production build in `prod/public`

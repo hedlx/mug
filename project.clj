@@ -4,8 +4,6 @@
   :license {:name "The MIT License"
             :url "http://opensource.org/licenses/MIT"}
 
-  :min-lein-version "2.9.0"
-
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [org.clojure/clojurescript "1.10.758"]
                  [org.clojure/core.async "1.5.648"]
@@ -34,9 +32,9 @@
                            :preloads [devtools.preload]}}
                {:id "prod"
                 :source-paths ["src" "env/prod/cljs"]
-                :incremental true
+                :incremental false
                 :compiler {:main mug.prod
-                           :output-to "resources/public/js/app.js"
+                           :output-to "prod/js/app.js"
                            :optimizations :simple
                            :pretty-print false
                            :optimize-constants true
