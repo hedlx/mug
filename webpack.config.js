@@ -1,4 +1,5 @@
 const path = require('path');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'resources', 'public', 'js');
 const APP_DIR = path.resolve(__dirname, 'src', 'js');
@@ -17,6 +18,7 @@ const config = {
 			}
 		]
 	},
+	plugins: [new MonacoWebpackPlugin()],
   output: {
     path: BUILD_DIR,
     filename: 'npm-deps-bundle.js'

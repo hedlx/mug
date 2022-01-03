@@ -31,16 +31,12 @@
                            :output-to "resources/public/js/app.js"
                            :output-dir "resources/public/js/app"
                            :source-map-timestamp true
-                           :foreign-libs [{:file "resources/public/js/npm-deps-bundle.js"
-                                           :provides ["webpack.bundle"]}]
                            :preloads [devtools.preload]}}
                {:id "prod"
                 :source-paths ["src" "env/prod/cljs"]
                 :incremental true
                 :compiler {:main mug.prod
                            :output-to "resources/public/js/app.js"
-                           :foreign-libs [{:file "resources/public/js/npm-deps-bundle.js"
-                                           :provides ["webpack.bundle"]}]
                            :optimizations :simple
                            :pretty-print false
                            :optimize-constants true
