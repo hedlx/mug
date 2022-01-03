@@ -2,7 +2,8 @@
   (:require [reagent.core :as r]
             [goog.functions :as gfuncs]
             [mug.editor :as e]
-            [mug.playback :as pb]))
+            [mug.playback :as pb]
+            [mug.symphony :refer [symphony]]))
 
 (defn root []
   (let [playing (r/atom false)]
@@ -17,7 +18,4 @@
          (if @playing "stop" "play")]]
        [:div {:class "h-100 flex ma3 br4 shadow-4 overflow-hidden"}
         [e/editor {:on-change (gfuncs/debounce pb/update-source 500)
-                   :init-value (str '(defn gen [x]
-                                       (bit-and (* x x)
-                                                (bit-shift-right x 6)
-                                                (bit-shift-right x 12))))}]]])))
+                   :init-value symphony}]]])))
