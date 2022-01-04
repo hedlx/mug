@@ -1,4 +1,4 @@
-(ns mug.dev
+(ns ^:figwheel-no-load  mug.dev
   (:require
    [mug.core :as core]
    [devtools.core :as devtools]))

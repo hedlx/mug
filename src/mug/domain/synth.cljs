@@ -1,10 +1,10 @@
 (ns mug.domain.synth)
 
-(defn make-audio-ctx [rate on-ready]
+(defn make-audio-ctx [rate]
   (let [ctx (if js/window.AudioContext. ; Some browsers e.g. Safari don't use the unprefixed version yet.
               (js/window.AudioContext. (clj->js {:sampleRate rate}))
               (js/window.webkitAudioContext. (clj->js {:sampleRate rate})))]
-    (.then (-> ctx (.-audioWorklet) (.addModule "worklet/buffered.js")) #(do (on-ready ctx)))))
+    (.then (-> ctx (.-audioWorklet) (.addModule "worklet/buffered.js")) (fn [] ctx))))
 
 (defn- make-buffer-proc [ctx on-req]
   (let [node (js/AudioWorkletNode. ctx "buffer-processor")]
@@ -31,7 +31,7 @@
     (atom {:gen-fn (fn [x] 128)
            :ctx nil
            :rate rate
-           :buffer-size buffer-size
+           :buffer-size buffer-size   
            :offset 0
            :node nil
            :started-at 0
@@ -51,8 +51,8 @@
 
 (defn play [ctx offset]
   (if-let [audio-ctx (:ctx @ctx)]
-    (-> (:node @ctx) (.-parameters) (.get "stopped") (.setValueAtTime false (.-currentTime audio-ctx)))
-    (make-audio-ctx (:rate @ctx) #(do (swap! ctx assoc :ctx %) (actual-play ctx offset)))))
+    (do (-> (:node @ctx) (.-parameters) (.get "stopped") (.setValueAtTime false (.-currentTime audio-ctx))) (js/Promise.resolve audio-ctx))
+    (.then (make-audio-ctx (:rate @ctx)) #(do (swap! ctx assoc :ctx %) (actual-play ctx offset)))))
 
 (defn stop [ctx]
   (when-let [audio-ctx (:ctx @ctx)]

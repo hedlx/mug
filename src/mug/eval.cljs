@@ -1,8 +1,7 @@
 (ns mug.eval
   (:require [mug.domain.eval :as eval-core]
             [mug.symphony :refer [symphony]])
-  (:require-macros [mug.domain.source :as helper])
-  )
+  (:require-macros [mug.domain.source :as helper]))
 
 (def header
   (str

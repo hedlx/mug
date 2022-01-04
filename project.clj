@@ -22,8 +22,7 @@
   :cljsbuild {:builds
               [{:id "dev"
                 :source-paths ["src" "env"]
-                :figwheel {:on-jsload "mug.core/mount-root"
-                           :open-urls ["http://localhost:3449/"]}
+                :figwheel {:open-urls ["http://localhost:3449/"]}
                 :compiler {:main mug.dev
                            :asset-path "js/app"
                            :output-to "resources/public/js/app.js"

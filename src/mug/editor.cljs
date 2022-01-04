@@ -12,6 +12,7 @@
                                         (. -editor)
                                         (. create el (clj->js {:value init-value
                                                                :language "clojure"
+                                                               :automaticLayout true
                                                                :minimap {:enabled false}})))]
                            (swap! eInst (fn [] inst))
                            (. inst onDidChangeModelContent #(on-change (. inst getValue))))))}])
