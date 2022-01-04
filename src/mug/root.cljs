@@ -9,6 +9,7 @@
    [:div {:class "h3 ph3 flex items-center justify-between"}
     [:div {:class "f2 b code"} "μG"]
     [:div {:class "f2 b code pointer"
+           :style {:user-select "none"}
            :on-click #(if @pb/playing (pb/stop) (pb/play))}
      (if @pb/playing "stop" "play")]]
    [:div {:class "h-100 flex ma3 br4 shadow-4 overflow-hidden"}

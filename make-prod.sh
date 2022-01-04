@@ -5,6 +5,7 @@ rm -rf prod/
 mkdir -p prod/js
 
 cp -r resources/public/worklet prod
+cp -r resources/public/assets prod
 
 yarn prod
 lein cljsbuild once prod
