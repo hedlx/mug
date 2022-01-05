@@ -5,7 +5,7 @@ const theme = {
   inherit: true,
   rules: [
     {
-      background: "F9F9F9",
+      background: "ffffff",
       token: "",
     },
     {
@@ -170,7 +170,7 @@ const theme = {
   ],
   colors: {
     "editor.foreground": "#080808",
-    "editor.background": "#F9F9F9",
+    "editor.background": "#ffffff",
     "editor.selectionBackground": "#275FFF4D",
     "editor.lineHighlightBackground": "#2463B41F",
     "editorCursor.foreground": "#000000",
