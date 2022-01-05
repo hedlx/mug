@@ -24,7 +24,6 @@ const config = {
 	},
 	plugins: [new MonacoWebpackPlugin({
 		languages: ['clojure'],
-		features: ['editor'],
 		filename: isDev ? '[name].worker.js' : '[name].[contenthash].worker.js'
 	})],
   output: {
