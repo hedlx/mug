@@ -31,7 +31,7 @@
     (atom {:gen-fn (fn [x] 128)
            :ctx nil
            :rate rate
-           :buffer-size buffer-size   
+           :buffer-size buffer-size
            :offset 0
            :node nil
            :started-at 0
@@ -39,15 +39,15 @@
            :gain 1})))
 
 (defn- actual-play [ctx offset]
-    (let [audio-ctx (:ctx @ctx)
-          buffer (make-buffer-js (:buffer-size @ctx) (:gen-fn @ctx) offset)
-          node (make-buffer-proc audio-ctx (fn [e node]
-                                             (swap! ctx assoc :offset (+ (:buffer-size @ctx) (:offset @ctx)))
-                                             (send-proc node (make-buffer-js (:buffer-size @ctx) (:gen-fn @ctx) (:offset @ctx)))))]
-      (send-proc node buffer)
-      (swap! ctx assoc :started-at (.-currentTime audio-ctx))
-      (swap! ctx assoc :offset offset)
-      (swap! ctx assoc :node node)))
+  (let [audio-ctx (:ctx @ctx)
+        buffer (make-buffer-js (:buffer-size @ctx) (:gen-fn @ctx) offset)
+        node (make-buffer-proc audio-ctx (fn [e node]
+                                           (swap! ctx assoc :offset (+ (:buffer-size @ctx) (:offset @ctx)))
+                                           (send-proc node (make-buffer-js (:buffer-size @ctx) (:gen-fn @ctx) (:offset @ctx)))))]
+    (send-proc node buffer)
+    (swap! ctx assoc :started-at (.-currentTime audio-ctx))
+    (swap! ctx assoc :offset offset)
+    (swap! ctx assoc :node node)))
 
 (defn play [ctx offset]
   (if-let [audio-ctx (:ctx @ctx)]

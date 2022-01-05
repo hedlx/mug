@@ -1,6 +1,6 @@
 (ns mug.eval
   (:require [mug.domain.eval :as eval-core]
-            [mug.symphony :refer [symphony]])
+            [mug.storage :refer [get-symph]])
   (:require-macros [mug.domain.source :as helper]))
 
 (def header
@@ -20,4 +20,4 @@
 
 (def concrete-eval (eval-core/build-eval header sources footer))
 
-(js/setTimeout #(concrete-eval symphony) 100)
+(js/setTimeout #(concrete-eval (get-symph)) 100)

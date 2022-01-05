@@ -2,7 +2,7 @@
   (:require [goog.functions :as gfuncs]
             [mug.editor :as e]
             [mug.playback :as pb]
-            [mug.symphony :refer [symphony]]))
+            [mug.storage :refer [get-symph]]))
 
 (defn root []
   [:div {:class "bg-near-white flex flex-column vh-100 w-100"}
@@ -15,4 +15,4 @@
    [:div {:class "h-100 flex mh4-m mh5-l mb4-m mb5-l br4-ns overflow-hidden"
           :style {:box-shadow "rgb(38, 57, 77) 0px 20px 30px -10px"}}
     [e/editor {:on-change (gfuncs/debounce pb/update-source 500)
-               :init-value symphony}]]])
+               :init-value (get-symph)}]]])
