@@ -2,8 +2,7 @@
   (:require [clojure.tools.namespace.find :as find]
             [clojure.tools.namespace.file :as file]
             [clojure.java.io :as io]
-            [clojure.java.classpath :as classpath])
-  (:import (java.io File)))
+            [clojure.java.classpath :as classpath]))
 
 (defn- name-val [rdr]
   [(-> rdr file/read-file-ns-decl second str) (slurp rdr)])
@@ -31,3 +30,6 @@
 
 (defmacro sources [& names]
   (sources* names))
+
+(defmacro inline [path & _]
+  (slurp (io/resource path)))

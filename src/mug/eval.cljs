@@ -6,17 +6,18 @@
 (def header
   (str
    '(ns mug.player
-      (:require [mug.context :as c]
-                [mug.domain.synth :as s]))))
+      (:require [mug.context :refer [manual-context]]
+                [mug.domain.stdlib :as std]))))
 
 (def footer
   (str '(when-not (nil? (resolve 'gen))
-          (s/set-gen-fn c/manual-context gen))))
+          (swap! manual-context assoc :gen-fn gen))))
 
 (def sources
   (helper/sources
    mug.context
-   mug.domain.synth))
+   mug.domain.synth
+   mug.domain.stdlib))
 
 (def concrete-eval (eval-core/build-eval header sources footer))
 

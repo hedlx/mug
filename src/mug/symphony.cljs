@@ -1,7 +1,4 @@
-(ns mug.symphony)
+(ns mug.symphony
+  (:require-macros [mug.domain.source :refer [inline]]))
 
-(def symphony
-  (str '(defn gen [x]
-          (bit-and (* x x)
-                   (bit-shift-right x 6)
-                   (bit-shift-right x 12)))))
+(def symphony (inline "resources/symphony.txt"))

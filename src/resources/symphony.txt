@@ -1,0 +1,22 @@
+(def >> bit-shift-right)
+
+(defn fefe [x]
+    (-> 0xfefe
+        (mod (-> x
+                 (>> 9)
+                 (bit-or 11)))
+        (bit-and x)))
+
+(defn c-1 [x]
+    (bit-and (* x x)
+             (>> x 6)
+             (>> x 12)))
+
+(defn c-2 [x]
+    (+ (* 10 (bit-or x
+                     (>> x 6)
+                     (>> x 16)))
+       (bit-and (>> x 11) 7)))
+
+; Feel free to try fefe, c-1 or c-2
+(def gen (comp std/byte->float c-2))
