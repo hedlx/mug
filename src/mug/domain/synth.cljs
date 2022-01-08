@@ -44,7 +44,7 @@
         buffer (make-buffer-js buffer-size gen-fn init-offset)
         node (make-buffer-proc audio-ctx (make-on-req ctx))]
     (send-proc node buffer)
-    (swap! ctx assoc :offset init-offset)
+    (swap! ctx assoc :offset (+ init-offset buffer-size))
     (swap! ctx assoc :node node)))
 
 (defn play [ctx offset]
