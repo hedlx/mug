@@ -19,14 +19,16 @@
 (defn build-eval [header sources footer]
   (let [current-state (empty-state)]
     (fn [source]
-      (eval-str
-       current-state
-       (str header source footer)
-       "user-fn"
-       {:eval js-eval
-        :load (build-loader sources)}
-       (fn [r]
-         (let [err (:error r)]
-           (if (nil? err)
-             (doseq [sub (vals @eval-subs)] (sub source))
-             (print "eval error:" (:error r)))))))))
+      (try
+        (eval-str
+         current-state
+         (str header source footer)
+         "user-fn"
+         {:eval js-eval
+          :load (build-loader sources)}
+         (fn [r]
+           (let [err (:error r)]
+             (if (nil? err)
+               (doseq [sub (vals @eval-subs)] (sub source))
+               (print "eval error:" (:error r))))))
+        (catch js/Error e (print "eval error:" e))))))

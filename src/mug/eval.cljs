@@ -16,7 +16,7 @@
 (def sources
   (helper/sources
    mug.context
-   mug.domain.synth
+   mug.domain.context
    mug.domain.stdlib))
 
 (def concrete-eval (eval-core/build-eval header sources footer))

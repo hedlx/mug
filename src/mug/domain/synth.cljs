@@ -1,4 +1,5 @@
-(ns mug.domain.synth)
+(ns mug.domain.synth
+  (:require [goog.math :as math]))
 
 (defn make-audio-ctx [rate]
   (let [ctx (if js/window.AudioContext.
@@ -14,24 +15,18 @@
         (-> .-onmessage (set! (fn [e] (on-req e node)))))
     node))
 
+(defn- fnt [x] (with-meta (fn [] (int x)) {:fnt true}))
 (defn- make-buffer-js [size gen-fn offset]
   (clj->js
    (->> (range offset (+ offset size))
-        (map #(gen-fn (int %))))))
+        (map #(math/clamp
+               -1 1
+               (try
+                 (gen-fn (fnt %))
+                 (catch js/Error _ 0)))))))
 
 (defn- send-proc [proc data]
   (-> proc (.-port) (.postMessage data)))
-
-(defn empty-audio-context []
-  (let [rate 8000
-        buffer-size (/ rate 4)]
-    (atom {:gen-fn (fn [x] 128)
-           :ctx nil
-           :rate rate
-           :buffer-size buffer-size
-           :offset 0
-           :node nil
-           :gain 1})))
 
 (defn make-on-req [ctx]
   (fn [_ node]

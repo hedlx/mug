@@ -1,4 +1,4 @@
 (ns mug.context
-  (:require [mug.domain.synth :as synth]))
+  (:require [mug.domain.context :as context]))
 
-(defonce manual-context (synth/empty-audio-context))
+(defonce manual-context (context/empty-audio-context))

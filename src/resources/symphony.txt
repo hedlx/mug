@@ -1,3 +1,8 @@
+;; You can try some algorithmic one-liners
+;; References:
+;; https://countercomplex.blogspot.com/2011/10/algorithmic-symphonies-from-one-line-of.html
+;; https://github.com/erlehmann/algorithmic-symphonies
+
 (def >> bit-shift-right)
 
 (defn fefe [x]
@@ -18,5 +23,15 @@
                      (>> x 16)))
        (bit-and (>> x 11) 7)))
 
-; Feel free to try fefe, c-1 or c-2
-(def gen (comp std/byte->float c-2))
+;; (def gen (comp std/byte->signal c-2 std/unwrap))
+
+
+;; Or use μG as synthesizer with stdlib help.
+;; https://github.com/hedlx/mug/blob/master/src/mug/domain/stdlib.cljs
+(def supersaw
+    (std/add #(-> % (std/saw 127) (std/gain 0.2))
+             #(-> % (std/saw 128) (std/gain 0.2))
+             #(-> % (std/saw 129) (std/gain 0.2))
+             #(-> % (std/saw 64)  (std/gain 0.3))))
+
+(def gen supersaw)
