@@ -31,5 +31,5 @@
 (defmacro sources [& names]
   (sources* names))
 
-(defmacro inline [path & _]
+(defmacro inline [path]
   (slurp (io/resource path)))

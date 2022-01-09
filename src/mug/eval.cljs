@@ -7,7 +7,9 @@
   (str
    '(ns mug.player
       (:require [mug.context :refer [manual-context]]
-                [mug.domain.stdlib :as std]))))
+                [mug.domain.stdlib :as std]
+                [mug.domain.stdlibm])
+      (:require-macros [mug.domain.stdlibm :refer [defsig]]))))
 
 (def footer
   (str '(when-not (nil? (resolve 'gen))
@@ -17,6 +19,7 @@
   (helper/sources
    mug.context
    mug.domain.context
+   mug.domain.stdlibm
    mug.domain.stdlib))
 
 (def concrete-eval (eval-core/build-eval header sources footer))

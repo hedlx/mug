@@ -28,10 +28,16 @@
 
 ;; Or use μG as synthesizer with stdlib help.
 ;; https://github.com/hedlx/mug/blob/master/src/mug/domain/stdlib.cljs
-(def supersaw
-    (std/add #(-> % (std/saw 127) (std/gain 0.2))
-             #(-> % (std/saw 128) (std/gain 0.2))
-             #(-> % (std/saw 129) (std/gain 0.2))
-             #(-> % (std/saw 64)  (std/gain 0.3))))
+(defsig supersaw [freq]
+    (std/add #(-> % (std/saw (- freq 1)) (std/gain 0.2))
+             #(-> % (std/saw freq)       (std/gain 0.2))
+             #(-> % (std/saw (+ freq 1)) (std/gain 0.2))
+             #(-> % (std/saw (/ freq 2)) (std/gain 0.3))))
 
-(def gen supersaw)
+(defsig low-wob [freq]
+    (std/add
+        #(let [g (-> % (std/sine (+ freq 1)) (/ 2))
+               shift (-> % (std/sine (+ (* freq 2) 1)))]
+            (-> % (std/sine freq shift) (std/gain g)))))
+
+(def gen (low-wob 32))

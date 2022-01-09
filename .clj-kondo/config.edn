@@ -1,0 +1,1 @@
+{:lint-as {mug.domain.stdlibm/defsig clojure.core/defn}}

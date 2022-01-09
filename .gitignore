@@ -5,6 +5,7 @@ figwheel_server.log
 node_modules
 target
 .lsp
-.clj-kondo
+.clj-kondo/.cache
 .calva
 prod
+.rebel_readline_history
