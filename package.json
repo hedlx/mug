@@ -10,7 +10,7 @@
     "dev": "NODE_ENV=development webpack"
   },
   "dependencies": {
-    "monaco-editor": "^0.31.1"
+    "monaco-editor": "^0.34.1"
   },
   "devDependencies": {
     "@cljs-oss/module-deps": "^1.1.1",

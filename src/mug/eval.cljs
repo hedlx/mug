@@ -16,6 +16,8 @@
           (swap! manual-context assoc :gen-fn gen))))
 
 (def sources
+  ;; That is kinda okay
+  #_{:clj-kondo/ignore [:unresolved-symbol]}
   (helper/sources
    mug.context
    mug.domain.context
